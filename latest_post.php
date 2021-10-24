@@ -1,67 +1,48 @@
+<?php
+$folder_photo = 'post_image/';
+include "connect.php";
+$sql = "select * from news limit 2";
+$result = mysqli_query($connect, $sql);
+?>
+
 <h3 class="nk-decorated-h-2"><span><span class="text-main-1">Latest</span> Posts</span></h3>
 <div class="nk-gap"></div>
+
 <div class="nk-blog-grid">
+
     <div class="row">
 
-
+        <?php foreach ($result as $each): ?>
         <div class="col-md-6">
             <!-- START: Post -->
+
             <div class="nk-blog-post">
                 <a href="blog-article.html" class="nk-post-img">
-                    <img src="assets/images/post-5-mid.jpg"
+                    <img src="<?php echo $folder_photo . $each['post_image']; ?>"
                          alt="He made his passenger captain of one">
-                    <span class="nk-post-comments-count">13</span>
+
                 </a>
                 <div class="nk-gap"></div>
-                <h2 class="nk-post-title h4"><a href="blog-article.html">He made his passenger
-                        captain of one</a></h2>
+                <h2 class="nk-post-title h4"><a href="blog-article.html"><?php echo $each['post_title']; ?></a></h2>
                 <div class="nk-post-by">
                     <img src="assets/images/avatar-3.jpg" alt="Wolfenstein" class="rounded-circle"
-                         width="35"> by <a href="#">Wolfenstein</a> in Jul 23, 2018
+                         width="35"> by <a href="#"><?php echo $each['posted_by']; ?></a> in <?php echo $each['posting_date']; ?>
                 </div>
                 <div class="nk-gap"></div>
                 <div class="nk-post-text">
-                    <p>Just then her head struck against the roof of the hall: in fact she was now
-                        more than nine feet high, and she at once took up the little golden key and
-                        hurried off to the garden door...</p>
+                    <p><?php echo substr($each['post_details'],0,240); ?>...</p>
                 </div>
                 <div class="nk-gap"></div>
                 <a href="blog-article.html"
                    class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Read
                     More</a>
             </div>
+
             <!-- END: Post -->
         </div>
-
-
-        <div class="col-md-6">
-            <!-- START: Post -->
-            <div class="nk-blog-post">
-                <a href="blog-article.html" class="nk-post-img">
-                    <img src="assets/images/post-6-mid.jpg"
-                         alt="At first, for some time, I was not able to answer">
-                    <span class="nk-post-comments-count">0</span>
-                </a>
-                <div class="nk-gap"></div>
-                <h2 class="nk-post-title h4"><a href="blog-article.html">At first, for some time, I
-                        was not able to answer</a></h2>
-                <div class="nk-post-by">
-                    <img src="assets/images/avatar-3.jpg" alt="Wolfenstein" class="rounded-circle"
-                         width="35"> by <a href="#">Wolfenstein</a> in Jul 3, 2018
-                </div>
-                <div class="nk-gap"></div>
-                <div class="nk-post-text">
-                    <p>This little wandering journey, without settled place of abode, had been so
-                        unpleasant to me, that my own house, as I called it to myself, was a perfect
-                        settlement to me compared to that...</p>
-                </div>
-                <div class="nk-gap"></div>
-                <a href="blog-article.html"
-                   class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Read
-                    More</a>
-            </div>
+        <?php endforeach; ?>
             <!-- END: Post -->
-        </div>
+
 
     </div>
 </div>

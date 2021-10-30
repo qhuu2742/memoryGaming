@@ -19,7 +19,7 @@ if (isset($_SESSION['cap_do'])){
     <?php }} ?>
 <ul>
     <li>
-        <a href="../quan_ly_hoa_don">Quản lý hóa đơn</a>
+        <a href="../pictures_management">Quản lý ảnh</a>
     </li>
 </ul>
 

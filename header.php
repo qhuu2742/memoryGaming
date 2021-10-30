@@ -116,7 +116,7 @@
         <div class="container">
             <div class="nk-nav-table">
 
-                <a href="index.html" class="nk-nav-logo">
+                <a href="index.php" class="nk-nav-logo">
                     <img src="assets/images/logo.png" alt="GoodGames" width="199">
                 </a>
 

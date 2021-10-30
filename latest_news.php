@@ -1,8 +1,11 @@
 <?php
 $folder_photo = 'post_image/';
 include "connect.php";
-    $sql = "SELECT * from news LEFT JOIN news_category ON news.category_id = news_category.id limit 6";
+$sql = "SELECT * from news LEFT JOIN news_category ON news.category_id = news_category.id limit 6";
+$sql2 = "SELECT * from news LEFT JOIN news_category ON news.category_id = news_category.id limit 4";
+
 $result = mysqli_query($connect, $sql);
+$result2 = mysqli_query($connect, $sql2);
 
 ?>
 <div class="nk-gap-2"></div>
@@ -161,6 +164,7 @@ $result = mysqli_query($connect, $sql);
 
     <div class="nk-news-box-each-info">
         <div class="nano">
+
             <div class="nano-content">
                 <!-- There will be inserted info about selected news-->
                 <div class="nk-news-box-item-image">
@@ -187,26 +191,23 @@ $result = mysqli_query($connect, $sql);
 <div class="nk-blog-grid">
     <div class="row">
 
-
+        <?php foreach ($result2 as $each2): ?>
         <div class="col-md-6 col-lg-3">
             <!-- START: Post -->
             <div class="nk-blog-post">
                 <a href="blog-article.html" class="nk-post-img">
-                    <img src="assets/images/post-5-mid.jpg" alt="He made his passenger captain of one">
-                    <span class="nk-post-comments-count">13</span>
+                    <img src="<?php echo $folder_photo . $each2['post_image']; ?>" alt="He made his passenger captain of one">
+<!--                    <span class="nk-post-comments-count">13</span>-->
 
                     <span class="nk-post-categories">
-                                    <span class="bg-main-5">Indie</span>
+                                    <span class="bg-main-5"><?php echo $each2['category_name']; ?></span>
                                 </span>
 
                 </a>
                 <div class="nk-gap"></div>
-                <h2 class="nk-post-title h4"><a href="blog-article.html">He made his passenger captain of
-                        one</a></h2>
+                <h2 class="nk-post-title h4"><a href="blog-article.html"><?php echo $each2['post_title']; ?></a></h2>
                 <div class="nk-post-text">
-                    <p>Just then her head struck against the roof of the hall: in fact she was now more than
-                        nine feet high, and she at once took up the little golden key and hurried off to the
-                        garden door...</p>
+                    <p><?php echo substr($each2['post_details'],0,240) . ' ...'; ?></p>
                 </div>
                 <div class="nk-gap"></div>
                 <a href="blog-article.html"
@@ -215,100 +216,12 @@ $result = mysqli_query($connect, $sql);
                 <div class="nk-post-date float-right"><span class="fa fa-calendar"></span> Jul 23, 2018
                 </div>
             </div>
+
             <!-- END: Post -->
         </div>
+        <?php endforeach; ?>
 
 
-        <div class="col-md-6 col-lg-3">
-            <!-- START: Post -->
-            <div class="nk-blog-post">
-                <a href="blog-article.html" class="nk-post-img">
-                    <img src="assets/images/post-6-mid.jpg"
-                         alt="At first, for some time, I was not able to answer">
-                    <span class="nk-post-comments-count">0</span>
-
-                    <span class="nk-post-categories">
-                                    <span class="bg-main-5">Racing</span>
-                                </span>
-
-                </a>
-                <div class="nk-gap"></div>
-                <h2 class="nk-post-title h4"><a href="blog-article.html">At first, for some time, I was not
-                        able to answer</a></h2>
-                <div class="nk-post-text">
-                    <p>This little wandering journey, without settled place of abode, had been so unpleasant
-                        to me, that my own house, as I called it to myself, was a perfect settlement to me
-                        compared to that...</p>
-                </div>
-                <div class="nk-gap"></div>
-                <a href="blog-article.html"
-                   class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Read
-                    More</a>
-                <div class="nk-post-date float-right"><span class="fa fa-calendar"></span> Jul 3, 2018</div>
-            </div>
-            <!-- END: Post -->
-        </div>
-
-
-        <div class="col-md-6 col-lg-3">
-            <!-- START: Post -->
-            <div class="nk-blog-post">
-                <a href="blog-article.html" class="nk-post-img">
-                    <img src="assets/images/post-7-mid.jpg"
-                         alt="At length one of them called out in a clear">
-                    <span class="nk-post-comments-count">0</span>
-
-                    <span class="nk-post-categories">
-                                    <span class="bg-main-6">MOBA</span>
-                                </span>
-
-                </a>
-                <div class="nk-gap"></div>
-                <h2 class="nk-post-title h4"><a href="blog-article.html">At length one of them called out in
-                        a clear</a></h2>
-                <div class="nk-post-text">
-                    <p>TJust then her head struck against the roof of the hall: in fact she was now more
-                        than nine feet high, and she at once took up the little golden key and hurried off
-                        to the garden door...</p>
-                </div>
-                <div class="nk-gap"></div>
-                <a href="blog-article.html"
-                   class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Read
-                    More</a>
-                <div class="nk-post-date float-right"><span class="fa fa-calendar"></span> Jul 3, 2018</div>
-            </div>
-            <!-- END: Post -->
-        </div>
-
-
-        <div class="col-md-6 col-lg-3">
-            <!-- START: Post -->
-            <div class="nk-blog-post">
-                <a href="blog-article.html" class="nk-post-img">
-                    <img src="assets/images/post-8-mid.jpg" alt="For good, too though, in consequence">
-                    <span class="nk-post-comments-count">0</span>
-
-                    <span class="nk-post-categories">
-                                    <span class="bg-main-2">Adventure</span>
-                                </span>
-
-                </a>
-                <div class="nk-gap"></div>
-                <h2 class="nk-post-title h4"><a href="blog-article.html">For good, too though, in
-                        consequence</a></h2>
-                <div class="nk-post-text">
-                    <p>This little wandering journey, without settled place of abode, had been so unpleasant
-                        to me, that my own house, as I called it to myself, was a perfect settlement to me
-                        compared to that...</p>
-                </div>
-                <div class="nk-gap"></div>
-                <a href="blog-article.html"
-                   class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Read
-                    More</a>
-                <div class="nk-post-date float-right"><span class="fa fa-calendar"></span> Jul 3, 2018</div>
-            </div>
-            <!-- END: Post -->
-        </div>
 
     </div>
 </div>

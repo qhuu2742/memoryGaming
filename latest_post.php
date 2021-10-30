@@ -1,7 +1,7 @@
 <?php
 $folder_photo = 'post_image/';
 include "connect.php";
-$sql = "select * from news limit 2";
+$sql = "select * from news order by id desc limit 2";
 $result = mysqli_query($connect, $sql);
 ?>
 
